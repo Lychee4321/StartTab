@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nao Main</title>
+    <style>
+        :root {
+            --background-color: black;
+            --text-color: white;
+            --button-bg-color: #333;
+            --button-text-color: white;
+            --button-hover-bg-color: #555;
+            --button-hover-text-color: white;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body.light-mode {
+            --background-color: white;
+            --text-color: black;
+            --button-bg-color: lightgray;
+            --button-text-color: black;
+            --button-hover-bg-color: gray;
+            --button-hover-text-color: black;
+        }
+
+        h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .button-container {
+            display: inline-block;
+            margin: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 5px;
+            background-color: var(--button-bg-color);
+            color: var(--button-text-color);
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s, opacity 0.3s, transform 0.3s;
+            opacity: 0;
+            animation: fly-in 1s forwards;
+        }
+
+        button:hover {
+            background-color: var(--button-hover-bg-color);
+            color: var(--button-hover-text-color);
+            transform: scale(1.05);
+        }
+
+        button:nth-child(1) { animation-delay: 0.1s; }
+        button:nth-child(2) { animation-delay: 0.2s; }
+        button:nth-child(3) { animation-delay: 0.3s; }
+        button:nth-child(4) { animation-delay: 0.4s; }
+        button:nth-child(5) { animation-delay: 0.5s; }
+        button:nth-child(6) { animation-delay: 0.6s; }
+        button:nth-child(7) { animation-delay: 0.7s; }
+        button:nth-child(8) { animation-delay: 0.8s; }
+        button:nth-child(9) { animation-delay: 0.9s; }
+
+        #toggle-button {
+            margin-top: 20px;
+            opacity: 0;
+            animation: fly-in 1s forwards;
+            animation-delay: 1s;
+        }
+
+        @keyframes fly-in {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body class="dark-mode">
+    <h1>naonfall</h1>
+    <div class="button-container">
+        <button onclick="navigateToSite('https://instagram.com')">Instagram</button>
+        <button onclick="navigateToSite('https://youtube.com')">Youtube</button>
+    </div>
+    <div class="button-container">
+        <button onclick="navigateToSite('https://www.microsoft.com/ko-kr')">Microsoft</button>
+        <button onclick="navigateToSite('https://chatgpt.com')">ChatGPT</button>
+    </div>
+    <div class="button-container">
+        <button onclick="navigateToSite('https://www.github.com')">GitHub</button>
+        <button onclick="navigateToSite('https://www.op.gg/summoners/kr/%EC%9D%B4%20%EC%9E%AC%20%EB%AA%85-%EB%8C%80%EA%B6%8C%EC%A3%BC%EC%9E%90')">OP.GG</button>
+    </div>
+    <div class="button-container">
+        <button onclick="navigateToSite('https://fconline.nexon.com')">FC ONLINE</button>
+        <button onclick="navigateToSite('https://www.etoos.com/')">Etoos</button>
+    </div>
+    <button id="toggle-button" onclick="toggleDarkMode()">Toggle Light Mode</button>
+
+    <script>
+        function navigateToSite(url) {
+            window.location.href = url;
+        }
+
+        function toggleDarkMode() {
+            document.body.classList.toggle('light-mode');
+            const button = document.getElementById('toggle-button');
+            if (document.body.classList.contains('light-mode')) {
+                button.textContent = 'Toggle Dark Mode';
+            } else {
+                button.textContent = 'Toggle Light Mode';
+            }
+        }
+    </script>
+</body>
+</html>
